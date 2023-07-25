@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067eed5c3d8b8574c82b688397fd5ab7, type: 3}
+  m_Name: Meat Professor
+  m_EditorClassIdentifier: 
+  name: Meat Professor
+  description: 
+  startDialogue:
+    lines:
+    - It's not safe to go out there without a Pokemon
+  inProgressDialogue:
+    lines: []
+  completedDialogue:
+    lines:
+    - You can have one
+  requiredItem: {fileID: 0}
+  rewardItem: {fileID: 0}

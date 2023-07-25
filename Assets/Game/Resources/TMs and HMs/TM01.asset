@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a250f576e169ef40a677ab8f05fe179, type: 3}
+  m_Name: TM01
+  m_EditorClassIdentifier: 
+  itemID: 7b670f6c-56e7-4605-be3a-ab69e3726c82
+  priceTV: 0
+  category: 0
+  nameItem: bbb
+  description: Teaches Super Sonic to a pokemon
+  icon: {fileID: 6639657697291588988, guid: 3ae12697ae504414bbf0797ea36dfddd, type: 3}
+  price: 0
+  isSellable: 0
+  move: {fileID: 11400000, guid: b015cb2b324fec54c96eae5493fd6bb4, type: 2}
+  isHM: 1

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820a0b4cfe78d4440a972fd805070b30, type: 3}
+  m_Name: MaxEther
+  m_EditorClassIdentifier: 
+  itemID: 83199699-2fa5-4ea5-88c4-e801f4abb5e2
+  priceTV: 0
+  category: 0
+  nameItem: MaxEther
+  description: Recovers The PP of the POKEMON fully
+  icon: {fileID: 6934933687277767597, guid: cc67f8bf5cbe1d24bb7b31593f3bc3db, type: 3}
+  price: 100
+  isSellable: 1
+  hpAmount: 0
+  restoreMaxHP: 0
+  ppAmount: 0
+  restoreMaxPP: 1
+  status: 0
+  recoverAllStatus: 0
+  revive: 0
+  maxRevive: 0

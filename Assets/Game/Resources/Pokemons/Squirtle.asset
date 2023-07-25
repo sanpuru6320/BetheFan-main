@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7728ad6ae3b0eb943a7d0922b6c4ba5c, type: 3}
+  m_Name: Squirtle
+  m_EditorClassIdentifier: 
+  name: Squirtle
+  description: 
+  frontSprite: {fileID: 21300000, guid: 818cf159951cf9a4e8e810b2bbab4096, type: 3}
+  backSprite: {fileID: 21300000, guid: 18fc6e8e3f72b154fba88f358748be28, type: 3}
+  type1: 3
+  type2: 0
+  maxHP: 45
+  attack: 49
+  defense: 49
+  spAttack: 65
+  spDefense: 65
+  speed: 45
+  expYield: 800
+  growthRate: 1
+  catchRate: 255
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 782a060f293d3574196c1323118cbb7e, type: 2}
+    level: 1
+  - moveBase: {fileID: 11400000, guid: 65b653a75f8b44643b60631b594a1921, type: 2}
+    level: 4
+  - moveBase: {fileID: 11400000, guid: 78277a639bc4dbb44b54f727e6293d03, type: 2}
+    level: 7
+  learnableByItems:
+  - {fileID: 11400000, guid: 782a060f293d3574196c1323118cbb7e, type: 2}
+  - {fileID: 11400000, guid: 5d1848398c9086a4f819bb912d57c43e, type: 2}
+  - {fileID: 11400000, guid: b015cb2b324fec54c96eae5493fd6bb4, type: 2}
+  - {fileID: 11400000, guid: 78277a639bc4dbb44b54f727e6293d03, type: 2}
+  evolutions: []
