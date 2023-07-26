@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
             if(input != Vector2.zero)
             {
                 DelaySample();
-                GameController.Instance.Buddy.Follow(GameController.Instance.PlayerController.transform.position);
+                //GameController.Instance.Buddy.Follow(GameController.Instance.PlayerController.transform.position);
                 StartCoroutine(charactor.Move(input, OnMoveOver));
             }
         }

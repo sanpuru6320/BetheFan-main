@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour
         ItemDB.Init();
         QuestDB.Init();
 
-        buddy = FindObjectOfType<BuddyController>().GetComponent<BuddyController>();
+        //buddy = FindObjectOfType<BuddyController>().GetComponent<BuddyController>();
     }
     private void Start()
     {

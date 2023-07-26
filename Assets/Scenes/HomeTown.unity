@@ -14830,7 +14830,6 @@ MonoBehaviour:
   - rid: 5692018433728970754
   - rid: 5692018433728970755
   - rid: 5692018433728970756
-  - rid: 5692018433728970758
   - rid: 5692018433728970759
   - rid: 5692018433728970760
   references:
@@ -14845,7 +14844,7 @@ MonoBehaviour:
           isPlayer: 0
           character: {fileID: 1636562398}
         movePatterns:
-        - {x: 0, y: 1}
+        - {x: 0, y: 0.5}
         - {x: 3, y: 0}
     - rid: 5692018376439234561
       type: {class: DialogueAction, ns: , asm: Assembly-CSharp}
@@ -14854,7 +14853,7 @@ MonoBehaviour:
         waitForCompletion: 1
         dialog:
           lines:
-          - Don't leave it!
+          - Don't leave yet! Professor was looking for you!
     - rid: 5692018376439234562
       type: {class: MoveActorAction, ns: , asm: Assembly-CSharp}
       data:
@@ -14903,7 +14902,7 @@ MonoBehaviour:
         waitForCompletion: 1
         dialog:
           lines:
-          - 'This is pro house '
+          - 'This is Professor house '
     - rid: 5692018433728970755
       type: {class: MoveActorAction, ns: , asm: Assembly-CSharp}
       data:
@@ -14913,7 +14912,7 @@ MonoBehaviour:
           isPlayer: 0
           character: {fileID: 1636562398}
         movePatterns:
-        - {x: -3, y: 0}
+        - {x: -4, y: 0}
         - {x: 0, y: 5}
     - rid: 5692018433728970756
       type: {class: TeleportObjectAction, ns: , asm: Assembly-CSharp}
@@ -14922,12 +14921,6 @@ MonoBehaviour:
         waitForCompletion: 1
         go: {fileID: 6324657331346686053}
         position: {x: -4.5, y: 7}
-    - rid: 5692018433728970758
-      type: {class: NPCInteractAction, ns: , asm: Assembly-CSharp}
-      data:
-        name: NPCInteractAction
-        waitForCompletion: 1
-        npc: {fileID: 6324657331346686054}
     - rid: 5692018433728970759
       type: {class: FadeInAction, ns: , asm: Assembly-CSharp}
       data:
@@ -15908,18 +15901,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6324657331346686052}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6324657331346686054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6324657331364582135, guid: 3484d7ca230dbb149b3707cf5b9b8075,
-    type: 3}
-  m_PrefabInstance: {fileID: 6324657331346686052}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6324657331346686053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29237d820dfd714ca23ef4aaf824326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9189391685985760985
 PrefabInstance:
   m_ObjectHideFlags: 0

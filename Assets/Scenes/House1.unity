@@ -2564,6 +2564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Merchant
       objectReference: {fileID: 0}
+    - target: {fileID: 6324657331364582122, guid: 3484d7ca230dbb149b3707cf5b9b8075,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6324657331364582134, guid: 3484d7ca230dbb149b3707cf5b9b8075,
         type: 3}
       propertyPath: m_RootOrder
