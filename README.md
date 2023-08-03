@@ -19,7 +19,7 @@ Assts/Scenes/Gameplay.unityから起動できます。
 * キャラクターの捕獲(ランダムエンカウントのみ)
 
 
-
+https://github.com/sanpuru6320/BetheFan-main/assets/98676288/19f39310-46c0-4978-865c-33022dcc02ab
 
 # 操作方法
 * 移動
