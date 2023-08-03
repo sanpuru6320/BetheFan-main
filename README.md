@@ -21,6 +21,8 @@ Assts/Scenes/Gameplay.unityから起動できます。
 
 ![スクリーンショット (1)](https://github.com/sanpuru6320/BetheFan-main/assets/98676288/78d80e9a-9282-40a8-be1a-9c236b38a581)
 
+![Drowsy-MainMenu-Windows_-Mac_-Linux-Unity-2021 3 12f1-Personal-_DX11_-2023-04-10-17-33-52_Trim_1](https://github.com/sanpuru6320/BetheFan-main/assets/98676288/becfa052-4611-40dc-9888-e89a4fe68b9b)
+
 # 操作方法
 * 移動
 十字キー
