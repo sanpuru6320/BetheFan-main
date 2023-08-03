@@ -3,6 +3,12 @@
 ポケモン風のターン制バトルなどが楽しめるゲームです。
 Assts/Scenes/Gameplay.unityから起動できます。
 
+
+
+
+https://github.com/sanpuru6320/BetheFan-main/assets/98676288/5c5fb9de-30b5-485b-9c3e-6e51f84160cf
+
+
 # できること(マップ中)
 * マップ移動
 * NPCとの会話
