@@ -1,7 +1,7 @@
 # Poke-RPG
 # ゲーム概要
 ポケモン風のターン制バトルなどが楽しめるゲームです。
-Assts/Scenes/Gameplay.unityから起動できます。
+Assts/Scenes/Gameplay.unityからゲームを開始できます。
 
 # 作った経緯
 RPGゲームが作りたいと思い、Unity C#の学習も兼ねて作りました。
