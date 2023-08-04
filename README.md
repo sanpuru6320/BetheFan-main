@@ -17,6 +17,10 @@ Assts/Scenes/Gameplay.unityから起動できます。
 * 進化
 * 逃走(ランダムエンカウントのみ)
 * キャラクターの捕獲(ランダムエンカウントのみ)
+マップ上のプレイ動画
+https://youtu.be/vyp7juroOTM
+戦闘のプレイ動画
+https://youtu.be/y2MGMcFj_u4
 
 # 操作方法
 * 移動
