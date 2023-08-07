@@ -60,7 +60,7 @@ public class DialogManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         
-        //OnShowDialog?.Invoke();
+        OnShowDialog?.Invoke();
 
         IsShowing = true;
         dialogBox.SetActive(true);
@@ -79,7 +79,7 @@ public class DialogManager : MonoBehaviour
 
         dialogBox.SetActive(false);
         IsShowing = false;
-        //OnDialogFinished?.Invoke();
+        OnDialogFinished?.Invoke();
 
     }
 

@@ -1514,6 +1514,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 811482965152259843, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
+      propertyPath: pokemons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 811482965152259843, guid: 78827f963fe1ec54182806d73d9fea64,
+        type: 3}
       propertyPath: pokemons.Array.data[2]._base
       value: 
       objectReference: {fileID: 11400000, guid: 696da90d1485c6c4ca52617b8a820f0b,
@@ -2009,7 +2014,7 @@ PrefabInstance:
     - target: {fileID: 1046185483417987366, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 38
+      value: 37.5
       objectReference: {fileID: 0}
     - target: {fileID: 1046185483417987366, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
@@ -2019,7 +2024,7 @@ PrefabInstance:
     - target: {fileID: 1046185483417987366, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -72
+      value: -71.25
       objectReference: {fileID: 0}
     - target: {fileID: 1052415726263068641, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
@@ -8114,7 +8119,7 @@ PrefabInstance:
     - target: {fileID: 7291478242434306153, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 38
+      value: 37.5
       objectReference: {fileID: 0}
     - target: {fileID: 7291478242434306153, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
@@ -8124,7 +8129,7 @@ PrefabInstance:
     - target: {fileID: 7291478242434306153, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -29
+      value: -28.75
       objectReference: {fileID: 0}
     - target: {fileID: 7315969275819069774, guid: 78827f963fe1ec54182806d73d9fea64,
         type: 3}
