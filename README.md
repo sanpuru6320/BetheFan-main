@@ -14,7 +14,7 @@ RPGゲームが作りたいと思い、Unity C#の学習とRPGゲーム作りの
 * 技マシンの使用
 * キャラクターの回復
 * 
-## マップ画面のプレイ動画
+## マップ画面のプレイ動画(Youtubeのリンク)
 https://youtu.be/vyp7juroOTM
 
 # できること(バトル中)
@@ -25,7 +25,7 @@ https://youtu.be/vyp7juroOTM
 * 逃走(ランダムエンカウントのみ)
 * キャラクターの捕獲(ランダムエンカウントのみ)
 
-## 戦闘画面のプレイ動画
+## 戦闘画面のプレイ動画(Youtubeのリンク)
 https://youtu.be/y2MGMcFj_u4
 
 # 操作方法
@@ -54,9 +54,18 @@ https://github.com/sanpuru6320/BetheFan-main/assets/98676288/23824fc3-ac6f-42eb-
 実装したカットシーンはマップ画面の動画1:10～1:20で見られます。
 ![スクリーンショット 2023-08-04 192229](https://github.com/sanpuru6320/BetheFan-main/assets/98676288/675e4dff-c74d-4c2b-af27-3fe78aed8358)
 
+### インスペクターのパラメータの調整で警告設定
+パラメータの設定ミスがないように、インスペクター上でChancePersentageの値の合計が100ではない場合、警告が出るようになっています。
+
+
+![BetheFan-main - Gameplay - Windows, Mac, Linux - Unity 2021 3 16f1 git 2021 3_evg_staging_82bb020e-b03b1330_draft-0 4200023 Personal_ _DX11_ 2023_10_12 15_06_29](https://github.com/sanpuru6320/BetheFan-main/assets/98676288/0f6564c3-6d1f-4ad8-b7c0-ce2f9000f94b)
+![BetheFan-main - Gameplay - Windows, Mac, Linux - Unity 2021 3 16f1 git 2021 3_evg_staging_82bb020e-b03b1330_draft-0 4200023 Personal_ _DX11_ 2023_10_12 15_08_52](https://github.com/sanpuru6320/BetheFan-main/assets/98676288/fff844ab-aa69-41cf-b6a8-d6bc1ea385e3)
+
+
 # 補足
+
 * Unityのバージョンは2021.3.16f1ですが、おそらく最新のバージョンでも動くと思います。
-* 海外のチュートリアルを参考に作ったので言語は英語です。
+* 海外の動画を参考に作ったので言語は英語です。
 
 # 参照元
 https://www.youtube.com/playlist?list=PLLf84Zj7U26kfPQ00JVI2nIoozuPkykDX
