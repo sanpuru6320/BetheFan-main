@@ -6,11 +6,11 @@ using UnityEngine;
 
 public enum ItemCategory { Item, Pokeballs, Tms}
 
-public class Inventory : MonoBehaviour, ISaveable
+public class Inventory : MonoBehaviour, ISaveable//プレイヤーインベントリ
 {
-    [SerializeField] List<ItemSlot> slots;
-    [SerializeField] List<ItemSlot> pokeballSlots;
-    [SerializeField] List<ItemSlot> tmSlots;
+    [SerializeField] List<ItemSlot> slots;//通常アイテム
+    [SerializeField] List<ItemSlot> pokeballSlots;//ポケボール
+    [SerializeField] List<ItemSlot> tmSlots;//技マシン
 
     List<List<ItemSlot>> allSlots;
     

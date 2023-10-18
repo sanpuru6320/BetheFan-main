@@ -43,8 +43,8 @@ public class PartyState : State<GameController>
     {
         SelectedPokemon = partyScreen.SelectedMember;
         
-        var prevState = gc.StateMachine.GetPrevState();
-        if(gc.StateMachine.GetPrevState() == InventoryState.i)
+        var prevState = gc.StateMachine.GetPrevState();//一つ前のステート取得
+        if(gc.StateMachine.GetPrevState() == InventoryState.i)//インベントリからアイテムを使用している場合
         {
             //Use Item
             StartCoroutine(GoToUseItemState());
@@ -54,12 +54,12 @@ public class PartyState : State<GameController>
         {
             var battleState = prevState as BattleState;
 
-            if (SelectedPokemon.HP <= 0)
+            if (SelectedPokemon.HP <= 0)//瀕死の場合
             {
                 partyScreen.SetMessageText("You can't send out a fainted pokemon");
                 return;
             }
-            if (SelectedPokemon == battleState.BattleSystem.PlayerUnit.Pokemon)
+            if (SelectedPokemon == battleState.BattleSystem.PlayerUnit.Pokemon)//既に場に出ている場合
             {
                 partyScreen.SetMessageText("You can't switch with the same pokemon");
                 return;
@@ -69,7 +69,7 @@ public class PartyState : State<GameController>
         }
         else
         {
-            //Todo : Opem summary screen
+            //Todo : Open summary screen
         }
     }
 
@@ -87,7 +87,7 @@ public class PartyState : State<GameController>
         if(prevState == BattleState.i)
         {
             var battleState = prevState as BattleState;
-            if (battleState.BattleSystem.PlayerUnit.Pokemon.HP <= 0)
+            if (battleState.BattleSystem.PlayerUnit.Pokemon.HP <= 0)//戦闘でHPが0になった場合
             {
                 partyScreen.SetMessageText("You have to choose a pokemon to continue");
                 return;

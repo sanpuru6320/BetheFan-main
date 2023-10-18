@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu(menuName = "Item/Create new pokeball")]
+[CreateAssetMenu(menuName = "Item/Create new pokeball")]
 
 public class PokeballItem : ItemBase
 {

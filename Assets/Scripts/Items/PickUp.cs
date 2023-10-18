@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour, Interactable, ISaveable
+public class PickUp : MonoBehaviour, Interactable, ISaveable//マップ上で取得できるアイテム
 {
     [SerializeField] ItemBase item;
 
@@ -12,13 +12,16 @@ public class PickUp : MonoBehaviour, Interactable, ISaveable
     {
         if (!Used)
         {
+            //インベントリに追加
             initiator.GetComponent<Inventory>().AddItem(item);
 
             Used = true;
 
+            //アイテム非表示
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider2D>().enabled = false;
 
+            //アイテム取得イベント
             string playerName = initiator.GetComponent<PlayerController>().Name;
 
             AudioManager.i.PlaySfx(AudioId.ItemObtained, pauseMusic: true);

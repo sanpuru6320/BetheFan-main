@@ -13,15 +13,16 @@ public class SurfableWater : MonoBehaviour, Interactable, IPlayerTriggerable
     public IEnumerator Interact(Transform initiator)
     {
         var animator = initiator.GetComponent<CharactorAnimator>();
-        if (animator.IsSurfing || isJumpingWater)
+        if (animator.IsSurfing || isJumpingWater)//サーフィン中とサーフィン移行中は無効
             yield break;
 
         yield return DialogManager.Instance.ShowDialogText("The water is deep blue");
 
-        var pokemonWithSurf = initiator.GetComponent<PokemonParty>().Pokemons.FirstOrDefault(p => p.Moves.Any(mbox => mbox.Base.Name == "Surf"));
+        var pokemonWithSurf = initiator.GetComponent<PokemonParty>().Pokemons.FirstOrDefault(p => p.Moves.Any(mbox => mbox.Base.Name == "Surf"));//パーティのポケモンにSurfの技があるか判定
 
         if (pokemonWithSurf != null)
         {
+            //サーフィンを行うか選択
             int selectedChoice = 0;
             yield return DialogManager.Instance.ShowDialogText($"Should {pokemonWithSurf.Base.Name} use surf?",
                 choices: new List<string>() { "Yes", "No" },
@@ -32,7 +33,7 @@ public class SurfableWater : MonoBehaviour, Interactable, IPlayerTriggerable
                 //Yes
                 yield return DialogManager.Instance.ShowDialogText($"{pokemonWithSurf.Base.Name} used surf!");
 
-                
+                //サーフィンへ移行
                 var dir = new Vector3(animator.MoveX, animator.MoveY);
                 var targetPos = initiator.position + dir;
 
@@ -44,7 +45,7 @@ public class SurfableWater : MonoBehaviour, Interactable, IPlayerTriggerable
         }
     }
 
-    public void OnPlayerTriggered(PlayerController player)
+    public void OnPlayerTriggered(PlayerController player)//サーフィン中のエンカウント
     {
         if (UnityEngine.Random.Range(1, 101) <= 5)
         {

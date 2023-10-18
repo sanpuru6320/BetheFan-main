@@ -12,7 +12,7 @@ public class ChoiceText : MonoBehaviour
         text = GetComponent<Text>();
     }
 
-    public void SetSelected(bool selected)
+    public void SetSelected(bool selected)//選択中のテキストの色を変更
     {
         text.color = (selected) ? GlobalSettings.i.HighlightedColor : Color.black;
     }

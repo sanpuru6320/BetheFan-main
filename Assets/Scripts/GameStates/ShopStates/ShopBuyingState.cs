@@ -63,12 +63,14 @@ public class ShopBuyingState : State<GameController>
         yield return DialogManager.Instance.ShowDialogText($"How many would you like to buy?",
             waitForInput: false, autoClose: false);
 
+        //購入数選択
         int countToBuy = 1;
         yield return countSelectorUI.ShowSelector(100, item.Price,
             (selectedCount) => countToBuy = selectedCount);
 
         DialogManager.Instance.CloseDialog();
 
+        //値段の表示
         float totalPrice = item.Price * countToBuy;
 
         if (Wallet.i.HasMoney(totalPrice))
@@ -79,7 +81,7 @@ public class ShopBuyingState : State<GameController>
                 choices: new List<string>() { "Yes", "No" },
                 onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
 
-            if (selectedChoice == 0)
+            if (selectedChoice == 0)//購入
             {
                 //Selected Yes
                 inventory.AddItem(item, countToBuy);
@@ -95,7 +97,7 @@ public class ShopBuyingState : State<GameController>
         browseItems = true;
     }
 
-    IEnumerator onBackFromBuying()
+    IEnumerator onBackFromBuying()//ショップ画面終了
     {
         yield return GameController.Instance.MoveCamera(-shopCameraOffset);
         shopUI.Close();

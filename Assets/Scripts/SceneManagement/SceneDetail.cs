@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneDetail : MonoBehaviour
 {
-    [SerializeField] List<SceneDetail> connectedScenes;
+    [SerializeField] List<SceneDetail> connectedScenes;//同時に表示させたいシーンリスト
     [SerializeField] AudioClip sceneMusic;
     public bool IsLoaded { get; private set; }
     private void OnTriggerEnter2D(Collider2D collision)

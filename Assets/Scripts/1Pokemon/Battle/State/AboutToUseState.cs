@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//トレーナーのポケモン入れ替え時にプレイヤーもポケモン入れ替えを行うか選択
 public class AboutToUseState : State<BattleSystem>
 {
     public Pokemon NewPokemon { get; set; }
@@ -61,7 +62,7 @@ public class AboutToUseState : State<BattleSystem>
         }
     }
 
-    IEnumerator SwitchAndContinueBattle()
+    IEnumerator SwitchAndContinueBattle()//プレイヤーポケモン入れ替え
     {
         yield return GameController.Instance.StateMachine.PushAndWait(PartyState.i);
         var selectedPokemon = PartyState.i.SelectedPokemon;
@@ -73,7 +74,7 @@ public class AboutToUseState : State<BattleSystem>
         yield return ContinueBattle();
     }
 
-    IEnumerator ContinueBattle()
+    IEnumerator ContinueBattle()//トレーナーポケモン入れ替え
     {
         yield return bs.SendNextTrainerPokemon();
         bs.StateMachine.Pop();

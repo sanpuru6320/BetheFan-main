@@ -7,9 +7,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleAction { Move, SwitchPokemon, UseItem, Run }
+public enum BattleAction { Move, SwitchPokemon, UseItem, Run }//戦闘中のアクション
 
-public enum BattleTrigger { LongGrass, Water}
+public enum BattleTrigger { LongGrass, Water}//エンカウント地形
 
 public class BattleSystem : MonoBehaviour
 {
@@ -56,21 +56,24 @@ public class BattleSystem : MonoBehaviour
 
     BattleTrigger battleTrigger;
 
+    //ランダムバトル開始
     public void StartBattle(PokemonParty playerParty, Pokemon wildPokemon,
         BattleTrigger trigger = BattleTrigger.LongGrass)
     {
         this.PlayerParty = playerParty; 
         this.WildPokemon = wildPokemon;
+
         player = playerParty.GetComponent<PlayerController>();
         IsTrainerBattle = false;
 
         battleTrigger = trigger;
 
-        AudioManager.i.PlayMusic(wildBattleMusic);
+        AudioManager.i.PlayMusic(wildBattleMusic);//BGM開始
         
         StartCoroutine(SetupBattle());
     }
-
+    
+    //トレーナーバトル開始
     public void StartTrainerBattle(PokemonParty playerParty, PokemonParty trainerParty,
         BattleTrigger trigger = BattleTrigger.LongGrass)
     {
@@ -83,7 +86,7 @@ public class BattleSystem : MonoBehaviour
 
         battleTrigger = trigger;
 
-        AudioManager.i.PlayMusic(trainerBattleMusic);
+        AudioManager.i.PlayMusic(trainerBattleMusic);//BGM開始
 
         StartCoroutine(SetupBattle());
     }
@@ -92,10 +95,12 @@ public class BattleSystem : MonoBehaviour
     {
         StateMachine = new StateMachine<BattleSystem>(this);
         
+        //以前の状態をクリア
         playerUnit.Clear();
         enemyUnit.Clear();
 
-         backgroundImage.sprite = (battleTrigger == BattleTrigger.LongGrass) ? grassBackground : waterBackground;
+        //背景の設定 
+        backgroundImage.sprite = (battleTrigger == BattleTrigger.LongGrass) ? grassBackground : waterBackground;
         
         if (!IsTrainerBattle)
         {
@@ -103,6 +108,7 @@ public class BattleSystem : MonoBehaviour
             playerUnit.Setup(PlayerParty.GetHealthyPokemon());
             enemyUnit.Setup(WildPokemon);
 
+            //戦闘開始のダイアログ表示
             dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
             yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared.");
         }
@@ -116,18 +122,20 @@ public class BattleSystem : MonoBehaviour
             
             playerImage.gameObject.SetActive(true); 
             trainerImage.gameObject.SetActive(true);
-            playerImage.sprite = player.Sprite; trainerImage.sprite = trainer.Sprite; 
-            
+            playerImage.sprite = player.Sprite; 
+            trainerImage.sprite = trainer.Sprite;
+
+            //戦闘開始のダイアログ表示
             yield return dialogBox.TypeDialog($"{trainer.Name} wants to battle");
 
-            // Send out first pokemon of the trainer
+            //トレーナーのポケモン呼び出し
             trainerImage.gameObject.SetActive(false); 
             enemyUnit.gameObject.SetActive(true); 
             var enemyPokemon = TrainerParty.GetHealthyPokemon(); 
             enemyUnit.Setup(enemyPokemon); 
-            yield return dialogBox.TypeDialog($"{trainer.Name} send out {enemyPokemon.Base.Name}"); 
-            
-            // Send out first pokemon of the player
+            yield return dialogBox.TypeDialog($"{trainer.Name} send out {enemyPokemon.Base.Name}");
+
+            //プレイヤーのポケモン呼び出し
             playerImage.gameObject.SetActive(false); 
             playerUnit.gameObject.SetActive(true);  
             var playerPokemon = PlayerParty.GetHealthyPokemon (); 
@@ -138,16 +146,18 @@ public class BattleSystem : MonoBehaviour
 
         isBattleOver = false;
         EscapeAttempts = 0;
-        partyScreen.Init();
+        partyScreen.Init();//パーティ画面セット
 
+        //行動選択ステート移行
         StateMachine.ChangeState(ActionSelectionState.i);
     }
 
 
 
-    public void BattleOver(bool won)
+    public void BattleOver(bool won)//戦闘終了
     {
         isBattleOver = true;
+        //状態異常、HUDリセット
         PlayerParty.Pokemons.ForEach(p => p.OnBattleOver());
         playerUnit.Hud.ClearData();
         enemyUnit.Hud.ClearData();
@@ -159,36 +169,41 @@ public class BattleSystem : MonoBehaviour
         StateMachine.Excute();
     }
 
-    public IEnumerator SwitchPokemon(Pokemon newPokemon)
+    public IEnumerator SwitchPokemon(Pokemon newPokemon)//ポケモン入れ替え
     {
         if (playerUnit.Pokemon.HP > 0)
         {
+            //ポケモンを戻す
             yield return dialogBox.TypeDialog($"Come back {playerUnit.Pokemon.Base.Name}");
             playerUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(2f);
         }
+        //入れ替るポケモンをセット
         playerUnit.Setup(newPokemon);
         dialogBox.SetMoveNames(newPokemon.Moves);
         yield return dialogBox.TypeDialog($"Go {newPokemon.Base.Name} !");
 
     }
 
-    public IEnumerator SendNextTrainerPokemon()
+    public IEnumerator SendNextTrainerPokemon()//トレーナーの次のポケモン呼び出し
     {
+        //次のポケモンとダイアログのセット
         var nextPokemon = TrainerParty.GetHealthyPokemon();
         enemyUnit.Setup(nextPokemon);
         yield return dialogBox.TypeDialog($"{trainer.Name} send out {nextPokemon.Base.Name}!");
     }
 
-    public IEnumerator ThrowPokeBall(PokeballItem pokeballItem)
+    public IEnumerator ThrowPokeBall(PokeballItem pokeballItem)//ポケモンボール使用
     {
 
+        //トレーナー戦の場合不可
         if (IsTrainerBattle)
         {
             yield return dialogBox.TypeDialog($"You can't steal the trainers pokemon!");
             yield break;
         }
 
+        //ポケモンボール表示
         yield return dialogBox.TypeDialog($"{player.Name} used {pokeballItem.Name.ToUpper()}!");
         var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2, 0), Quaternion.identity);
         var pokeball = pokeballObj.GetComponent<SpriteRenderer>();
@@ -201,6 +216,7 @@ public class BattleSystem : MonoBehaviour
 
         int shakeCount = TryToCatchPokemon(enemyUnit.Pokemon, pokeballItem);
         
+        //ポケモンボールシェイク
         for (int i = 0; i < Mathf.Min(shakeCount, 3); ++i)
         {
             yield return new WaitForSeconds(0.5f);
@@ -235,6 +251,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    //ポケモン捕獲の計算
     int TryToCatchPokemon(Pokemon pokemon, PokeballItem pokeballItem)
     {
         float a = (3 * pokemon.MaxHp - 2 * pokemon.HP) * pokemon.Base.CatchRate * pokeballItem.CatchRateModifier * ConditionsDB.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHp);

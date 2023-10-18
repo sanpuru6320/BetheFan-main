@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PokemonGiver : MonoBehaviour, ISaveable
 {
-    [SerializeField] Pokemon pokemonToGive;
+    [SerializeField] Pokemon pokemonToGive;//渡すポケモン
     [SerializeField] Dialog dialog;
 
     bool used = false;

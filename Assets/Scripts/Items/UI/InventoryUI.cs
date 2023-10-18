@@ -39,12 +39,13 @@ public class InventoryUI : SelectionUI<TextSlot>
         inventory.OnUpdated += UpdateItemList;
     }
 
-    void UpdateItemList()
+    void UpdateItemList()//インベントリのアイテムリスト更新
     {
-        // Clear all the existing items
+        //全てのアイテムクリア
         foreach (Transform child in itemList.transform)
             Destroy(child.gameObject);
 
+        //アイテムリスト生成、アイテムのセット
         slotUIList = new List<ItemSlotUI>();
         foreach (var itemSlot in inventory.GetSlotsByCategory(selectedCategory))
         {
@@ -64,16 +65,18 @@ public class InventoryUI : SelectionUI<TextSlot>
 
         int prevCategory = selectedCategory;
 
+        //カテゴリの移動
         if (Input.GetKeyDown(KeyCode.RightArrow))
             ++selectedCategory;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
             --selectedCategory;
-
+        
         if (selectedCategory > Inventory.ItemCategories.Count - 1)
             selectedCategory = 0;
         else if (selectedCategory < 0)
             selectedCategory = Inventory.ItemCategories.Count - 1;
 
+        //表示カテゴリの更新
         if (prevCategory != selectedCategory)
         {
             ResetSelection();
@@ -84,7 +87,7 @@ public class InventoryUI : SelectionUI<TextSlot>
         base.HandleUpdete();
     }
 
-    public override void UpdateSelectionUI()
+    public override void UpdateSelectionUI()//リストの更新(スクロール移動)
     {
         base.UpdateSelectionUI();
 
@@ -101,7 +104,7 @@ public class InventoryUI : SelectionUI<TextSlot>
 
     }
 
-    void HandleScrolling()
+    void HandleScrolling()//リストのスクロール
     {
         if (slotUIList.Count <= itemViewport) return;
         

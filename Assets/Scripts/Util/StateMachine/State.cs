@@ -6,10 +6,10 @@ namespace GDEUtils.StateMachine
 {
     public class State<T> : MonoBehaviour
     {
-        public virtual void Enter(T owner) { }
+        public virtual void Enter(T owner) { }//ステート開始
 
-        public virtual void Excute() { }
-        public virtual void Exit() { }
+        public virtual void Excute() { }//ステート中
+        public virtual void Exit() { }//ステート終了
     }
 }
 

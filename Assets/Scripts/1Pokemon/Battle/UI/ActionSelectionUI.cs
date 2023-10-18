@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ActionSelectionUI : SelectionUI<TextSlot>
+public class ActionSelectionUI : SelectionUI<TextSlot>//s“®‘I‘ğUI
 {
     private void Start()
     {

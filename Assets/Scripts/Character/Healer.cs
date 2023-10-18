@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Healer : MonoBehaviour
+public class Healer : MonoBehaviour//ポケモン回復NPC
 {
     public IEnumerator Heal(Transform player, Dialog dialog)
     {
@@ -17,6 +17,7 @@ public class Healer : MonoBehaviour
             //Yes
             yield return Fader.i.FadeIn(0.5f);
 
+            //パーティのポケモンを回復
             var playerParty = player.GetComponent<PokemonParty>();
             playerParty.Pokemons.ForEach(p => p.Heal());
             playerParty.PartyUpdated();

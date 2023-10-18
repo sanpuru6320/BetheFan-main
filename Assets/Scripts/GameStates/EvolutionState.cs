@@ -19,11 +19,13 @@ public class EvolutionState : State<GameController>
         i = this;
     }
 
+    //ポケモン進化イベント
     public IEnumerator Evolve(Pokemon pokmeon, Evolution evolution)
     {
         var gc = GameController.Instance;
         gc.StateMachine.Push(this);
         
+        //進化画面表示
         evolutionUI.SetActive(true);
 
         AudioManager.i.PlayMusic(evolutionMusic);
@@ -32,6 +34,7 @@ public class EvolutionState : State<GameController>
         yield return DialogManager.Instance.ShowDialogText($"{pokmeon.Base.Name} is evloving");
 
         var oldPokemon = pokmeon.Base;
+        //ステータスやスプライト更新
         pokmeon.Evolve(evolution);
 
         pokemonImage.sprite = pokmeon.Base.FrontSprite;
@@ -39,6 +42,7 @@ public class EvolutionState : State<GameController>
 
         evolutionUI.SetActive(false);
 
+        //パーティ反映
         gc.PartyScreen.SetPartyData();
         AudioManager.i.PlayMusic(gc.CurrentScene.SceneMusic, fade: true);
 

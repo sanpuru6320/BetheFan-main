@@ -64,6 +64,7 @@ public class InventoryState : State<GameController>
         gc.StateMachine.Pop();
     }
 
+    //アイテム使用可能か判定
     IEnumerator SelectPokemonAndUseItem()
     {
         var prevState = gc.StateMachine.GetPrevState();

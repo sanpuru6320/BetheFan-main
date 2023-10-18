@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EssentialObjects : MonoBehaviour
 {
+    bool hasSpawn = false;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (!hasSpawn)
+        {
+            DontDestroyOnLoad(gameObject);
+            hasSpawn = true;
+        }
     }
 }

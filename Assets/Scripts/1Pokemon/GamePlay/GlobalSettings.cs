@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalSettings : MonoBehaviour
+public class GlobalSettings : MonoBehaviour//UIテキストのハイライト
 {
     [SerializeField] Color highlightedColor;
 

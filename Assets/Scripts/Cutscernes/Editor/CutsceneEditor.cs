@@ -6,7 +6,7 @@ using UnityEngine;
 [CustomEditor(typeof(Cutscene))]
 public class CutsceneEditor : Editor
 {
-    public override void OnInspectorGUI()
+    public override void OnInspectorGUI()//追加したいカットシーンの処理をここに追加
     {
         var cutscene = target as Cutscene;
 

@@ -123,29 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &140021431 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 811482965786974878, guid: 78827f963fe1ec54182806d73d9fea64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1263040926}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &140021432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140021431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 667a33bdcc179c14b8cc466cc78a524c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopCameraOffset: {x: 3.5, y: 0}
-  inventoryUI: {fileID: 2126471873}
-  shopUI: {fileID: 819899840}
-  walletUI: {fileID: 1282161291}
-  countSelectorUI: {fileID: 2129338087}
 --- !u!114 &295595034 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5640441366380266853, guid: a36327ebb3f0cec4c837763c55a3fc60,
@@ -277,18 +254,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a717e7394870762458e0d9f9f1c890da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &819899840 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4590864821603280470, guid: 78827f963fe1ec54182806d73d9fea64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1263040926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5dc729203c0114dbb2d1c3390e2f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!850595691 &1020113882
@@ -10457,18 +10422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6e745b1790ad1468a974ca446b0d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1282161291 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1259698428198900781, guid: 78827f963fe1ec54182806d73d9fea64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1263040926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8d8752924d58e64abb84f112cbcb189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1438937436 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8513791582812662051, guid: a36327ebb3f0cec4c837763c55a3fc60,
@@ -10568,18 +10521,6 @@ MonoBehaviour:
   wildPokemonsInWater: []
   totalChance: 100
   totalChanceWater: -1
---- !u!114 &2126471873 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8495230436392899423, guid: 78827f963fe1ec54182806d73d9fea64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1263040926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb3505c51ade59246b6ce5329394f987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2127218076 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5640441366380266853, guid: a36327ebb3f0cec4c837763c55a3fc60,
@@ -10590,18 +10531,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e5e306f1d26b58459aa6a4b60900900, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2129338087 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8954357209293736149, guid: 78827f963fe1ec54182806d73d9fea64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1263040926}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf868abb8f5c7f041b484a75c9308711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8605150733687947963

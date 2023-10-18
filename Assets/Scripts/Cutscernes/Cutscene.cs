@@ -6,11 +6,11 @@ using UnityEngine;
 public class Cutscene : MonoBehaviour, IPlayerTriggerable
 {
     [SerializeReference]
-    [SerializeField] List<CutsceneAction> actions;
+    [SerializeField] List<CutsceneAction> actions;//アクションリスト
 
     public bool TriggerRepeatedly => false;
 
-    public IEnumerator Play()
+    public IEnumerator Play()//カットシーン起動
     {
         GameController.Instance.StateMachine.Push(CutsecneState.i);
         

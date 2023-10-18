@@ -29,6 +29,7 @@ public class ShopMenuState : State<GameController>
     IEnumerator StartMenuState()
     {
 
+        //ショップでの行動選択
         int selectedChoice = 0;
         yield return DialogManager.Instance.ShowDialogText("How may I serve you",
             waitForInput: false,

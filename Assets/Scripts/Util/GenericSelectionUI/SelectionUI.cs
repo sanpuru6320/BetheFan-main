@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace GDE.GenericSelectionUI
 {
-    public enum SelectionType { List, Grid}
+    public enum SelectionType { List, Grid}//UIタイプ
 
     public class SelectionUI<T> : MonoBehaviour where T :ISelectableItem
     {
-        List<T> items;
+        List<T> items;//UIのリスト
         protected int selectedItem = 0;
 
         SelectionType selectionType;
@@ -23,13 +23,14 @@ namespace GDE.GenericSelectionUI
         public event Action<int> OnSelected;
         public event Action OnBack;
 
+        //使用するUIタイプの設定
         public void SetSelectionSettings(SelectionType selectionType, int gridWidth)
         {
             this.selectionType = selectionType;
             this.gridWidth = gridWidth;
         }
 
-        public void SetItems(List<T> items)
+        public void SetItems(List<T> items)//UIのセット
         {
             this.items = items;
 
@@ -53,6 +54,7 @@ namespace GDE.GenericSelectionUI
             UpdateSelectionTimer();
             float prevSelection = selectedItem;
 
+            //UIタイプによって入力を切り替え
             if (selectionType == SelectionType.List)
                 HandleListSelection();
             else if (selectionType == SelectionType.Grid)
@@ -113,7 +115,7 @@ namespace GDE.GenericSelectionUI
 
         }
 
-        void UpdateSelectionTimer()
+        void UpdateSelectionTimer()//UIの入力速度調整
         {
             if (seletionTimer > 0)
                 seletionTimer = Mathf.Clamp(seletionTimer - Time.deltaTime, 0, seletionTimer);

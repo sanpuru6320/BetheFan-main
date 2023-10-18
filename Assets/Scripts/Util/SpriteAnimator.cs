@@ -24,7 +24,7 @@ public class SpriteAnimator
         spriteRenderer.sprite = frames[0];
     }
 
-    public void HandleUpdate()
+    public void HandleUpdate()//スプライトを入れ替えてのアニメーション処理
     {
         timer += Time.deltaTime;
         if (timer > frameRate)

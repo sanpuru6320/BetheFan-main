@@ -6,9 +6,9 @@ using UnityEngine;
 public class CutsceneAction
 {
     [SerializeField] string name;
-    [SerializeField] bool waitForCompletion = true;
+    [SerializeField] bool waitForCompletion = true;//次のアクションを待たせるか
 
-    public virtual IEnumerator Play()
+    public virtual IEnumerator Play()//起動する処理をここに書く
     {
         yield break;
     }

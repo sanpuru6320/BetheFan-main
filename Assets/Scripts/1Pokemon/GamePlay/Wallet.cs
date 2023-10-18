@@ -7,7 +7,7 @@ public class Wallet : MonoBehaviour,ISaveable
 {
     [SerializeField] float money;
 
-    public event Action OnMoneyChanged;
+    public event Action OnMoneyChanged; //所持金変更イベント
 
     public static Wallet i { get; private set; }
 

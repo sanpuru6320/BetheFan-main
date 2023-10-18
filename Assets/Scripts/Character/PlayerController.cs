@@ -10,8 +10,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
 {
 
-    [SerializeField] string name;
-    [SerializeField] Sprite sprite;
+    [SerializeField] string name;//プレイヤー名
+    [SerializeField] Sprite sprite;//プレイヤースプライト
 
  
     
@@ -53,8 +53,9 @@ public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
 
     }
 
-    IEnumerator InteractStart()
+    IEnumerator InteractStart()//インタラクト
     {
+        //インタラクトしたオブジェクトを取得
         var facingDir = new Vector3(charactor.Animator.MoveX, charactor.Animator.MoveY);
         var interactPos = transform.position + facingDir;
 
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
         var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.i.InteractableLayer | GameLayers.i.WaterLayer);
         if (collider != null)
         {
-            yield return collider.GetComponent<Interactable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactable>()?.Interact(transform);//インタラクト可能ならリターン
         }
     }
 
@@ -75,7 +76,7 @@ public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
 
         IPlayerTriggerable triggerable = null;
         
-        foreach(var collider in colliders)
+        foreach(var collider in colliders)//トリガーチェック
         {
             triggerable = collider.GetComponent<IPlayerTriggerable>(); 
             if (triggerable != null) 

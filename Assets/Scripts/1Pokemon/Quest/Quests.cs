@@ -47,6 +47,7 @@ public class Quests
 
         yield return DialogManager.Instance.ShowDialog(Base.CompletedDialogue);
 
+       //クエストアイテムの削除、報酬の受け渡し
         var inventory = Inventory.GetInventory();
         if (Base.RequiredItem != null)
         {

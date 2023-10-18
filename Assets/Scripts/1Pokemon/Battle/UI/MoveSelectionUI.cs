@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoveSelectionUI : SelectionUI<TextSlot>
+public class MoveSelectionUI : SelectionUI<TextSlot>//‹Z‘I‘ðUI
 {
     [SerializeField] List<TextSlot> moveTexts;
 

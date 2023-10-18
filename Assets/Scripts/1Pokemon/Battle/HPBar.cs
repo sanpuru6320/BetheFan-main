@@ -13,7 +13,7 @@ public class HPBar : MonoBehaviour
         health.transform.localScale = new Vector3(hpNormalized, 1f);
     }
 
-    public IEnumerator SetHPSmooth(float newHP)
+    public IEnumerator SetHPSmooth(float newHP)//HPバーを流れるように更新
     {
         IsUpdating = true;
         

@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoveToForgetSelectionUI : SelectionUI<TextSlot>
+public class MoveToForgetSelectionUI : SelectionUI<TextSlot>//忘れさせる技UI
 {
     [SerializeField] List<Text> moveTexts;
     [SerializeField] Color highlightedColor;

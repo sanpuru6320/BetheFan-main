@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
+    //ショップの商品アイテムリスト、アイコンUI
     [SerializeField] GameObject itemList;
     [SerializeField] ItemSlotUI itemSlotUI;
 
@@ -17,7 +18,7 @@ public class ShopUI : MonoBehaviour
 
     int selectedItem;
 
-    List<ItemBase> availableItems;
+    List<ItemBase> availableItems;//商品リスト
     Action<ItemBase> onItemSelected;
     Action onBack;
 
@@ -32,6 +33,7 @@ public class ShopUI : MonoBehaviour
         itemListRect = itemList.GetComponent<RectTransform>();
     }
 
+    //商品をショップUIに表示
     public void Show(List<ItemBase> availableItems, Action<ItemBase> onItemSelected, 
         Action onBack)
     {
@@ -48,6 +50,7 @@ public class ShopUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //ショップUI操作
     public void HandleUpdete()
     {
         var prevSelection = selectedItem;
@@ -68,6 +71,7 @@ public class ShopUI : MonoBehaviour
             onBack?.Invoke();
     }
 
+    //ショップリスト更新
     void UpdateItemList()
     {
         // Clear all the existing items
@@ -86,6 +90,7 @@ public class ShopUI : MonoBehaviour
         UpdateItemSlection();
     }
 
+    //選択中の画面更新
     void UpdateItemSlection()
     {
 
@@ -109,6 +114,7 @@ public class ShopUI : MonoBehaviour
         HandleScrolling();
     }
 
+    //ショップ画面更新
     void HandleScrolling()
     {
         if (slotUIList.Count <= itemViewport) return;

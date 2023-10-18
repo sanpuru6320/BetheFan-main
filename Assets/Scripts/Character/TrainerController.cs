@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TrainerController : MonoBehaviour, Interactable, ISaveable
 {
-    [SerializeField] string name;
-    [SerializeField] Sprite sprite;
+    [SerializeField] string name;//トレーナー名
+    [SerializeField] Sprite sprite;//トレーナースプライト
     [SerializeField] Dialog dialog;
     [SerializeField] Dialog dialogAfterBattle;
     [SerializeField] GameObject exclamation; 
-    [SerializeField] GameObject fov;
+    [SerializeField] GameObject fov;//認識範囲
 
     [SerializeField] AudioClip trainerAppearsClip;
 
@@ -30,24 +30,24 @@ public class TrainerController : MonoBehaviour, Interactable, ISaveable
     {
         character.HandleUpdate();
     }
-    public IEnumerator Interact(Transform initiator)
+    public IEnumerator Interact(Transform initiator)//会話後に戦闘
     {
         character.LookTowards(initiator.position);
 
-        if (!battleLost)
+        if (!battleLost)//戦闘前
         {
             AudioManager.i.PlayMusic(trainerAppearsClip);
 
             yield return DialogManager.Instance.ShowDialog(dialog);
             GameController.Instance.StartTrainerBattle(this);
         }
-        else
+        else//戦闘後
         {
             yield return DialogManager.Instance.ShowDialog(dialogAfterBattle);
         }
     }
 
-    public IEnumerator TriggerTrainerBattle(PlayerController player)
+    public IEnumerator TriggerTrainerBattle(PlayerController player)//プレイヤー発見後、戦闘
     {
         GameController.Instance.StateMachine.Push(CutsecneState.i);
         
@@ -78,7 +78,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISaveable
         battleLost = true;
         fov.gameObject.SetActive(false);
     }
-    public void SetFovRotation(FacingDirection dir)
+    public void SetFovRotation(FacingDirection dir)//認識方向をセット
     {
         float angle = 0f;
         if (dir == FacingDirection.Right)

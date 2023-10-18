@@ -24,18 +24,19 @@ public class BattleState : State<GameController>
     {
         gc = owner;
 
+        //バトル画面へ移行
         battleSystem.gameObject.SetActive(true);
         gc.WorldCamera.gameObject.SetActive(false);
 
         var playerParty = gc.PlayerController.GetComponent<PokemonParty>();
 
-        if (trainer == null)
+        if (trainer == null)//ランダムバトル
         {
-            var wildPokemon = gc.CurrentScene.GetComponent<MapArea>().GetRandomwildPokemon(trigger);
+            var wildPokemon = gc.CurrentScene.GetComponent<MapArea>().GetRandomwildPokemon(trigger);//エンカウントするポケモン取得
             var wildPokemonCopy = new Pokemon(wildPokemon.Base, wildPokemon.Level);
             battleSystem.StartBattle(playerParty, wildPokemonCopy, trigger);
         }
-        else
+        else//トレーナーバトル
         {
             var trainerParty = trainer.GetComponent<PokemonParty>();
             battleSystem.StartTrainerBattle(playerParty, trainerParty);
@@ -47,6 +48,7 @@ public class BattleState : State<GameController>
 
     public override void Exit()
     {
+        //マップ画面へ移行
         battleSystem.gameObject.SetActive(false);
         gc.WorldCamera.gameObject.SetActive(true);
 
@@ -58,7 +60,7 @@ public class BattleState : State<GameController>
         battleSystem.HandleUpdate();
     }
 
-    void EndBattle(bool won)
+    void EndBattle(bool won)//
     {
         if(trainer != null && won == true)
         {

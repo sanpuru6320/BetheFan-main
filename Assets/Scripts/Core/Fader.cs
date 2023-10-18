@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fader : MonoBehaviour
+public class Fader : MonoBehaviour//画面暗転
 {
     public static Fader i { get; private set; }
     Image image;

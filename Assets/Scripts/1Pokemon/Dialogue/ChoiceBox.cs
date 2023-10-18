@@ -23,6 +23,7 @@ public class ChoiceBox : MonoBehaviour
         foreach (Transform child in transform)
             Destroy(child.gameObject);
 
+        //選択肢の生成
         choiceTexts = new List<ChoiceText>();
         foreach(var choice in choices)
         {
@@ -44,14 +45,14 @@ public class ChoiceBox : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow))
             --currentChoice;
 
-        currentChoice = Mathf.Clamp(currentChoice, 0, choiceTexts.Count - 1);
+        currentChoice = Mathf.Clamp(currentChoice, 0, choiceTexts.Count - 1); //currentChoiceの範囲の設定
 
-        for (int i = 0;i < choiceTexts.Count; i++)
+        for (int i = 0;i < choiceTexts.Count; i++)//選択中のテキストの判定
         {
             choiceTexts[i].SetSelected(i == currentChoice);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))//選択入力
             choiceSelected = true;
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ItemSlotUI : MonoBehaviour
 {
+    //アイテム名とアイテム数
     [SerializeField] Text nameText;
     [SerializeField] Text countText;
     [SerializeField] TextMeshProUGUI nameTexts;

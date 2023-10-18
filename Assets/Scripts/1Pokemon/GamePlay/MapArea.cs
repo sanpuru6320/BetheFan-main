@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MapArea : MonoBehaviour //Scene本体ではなくSceneTriggerにAttachする
 {
+    //エンカウントするポケモン
     [SerializeField] List<PokemonEncounterRecord> wildPokemons;
     [SerializeField] List<PokemonEncounterRecord> wildPokemonsInWater;
 
@@ -51,12 +52,13 @@ public class MapArea : MonoBehaviour //Scene本体ではなくSceneTriggerにAtt
             }
         }
     }
-    public Pokemon GetRandomwildPokemon(BattleTrigger trigger)
+    public Pokemon GetRandomwildPokemon(BattleTrigger trigger)//エンカウントリストの中からランダムに決定
     {
         var pokemonList = (trigger == BattleTrigger.LongGrass) ? wildPokemons : wildPokemonsInWater;
         int randVal = Random.Range(1, 101);
         var pokemonRecord = pokemonList.First(p => randVal >= p.chanceLower && randVal <= p.chanceUpper);
 
+        //レベルの設定
         var levelRange = pokemonRecord.levelRange;
         int level = levelRange.y == 0 ? levelRange.x : Random.Range(levelRange.x, levelRange.y + 1);
 

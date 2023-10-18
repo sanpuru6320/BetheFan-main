@@ -32,14 +32,15 @@ public class BattleUnit : MonoBehaviour
         orginalPos = image.transform.localPosition;
         originalColor = image.color;
     }
-    public void Setup(Pokemon pokemon)
+    public void Setup(Pokemon pokemon)//ポケモンを配置
     {
         Pokemon = pokemon;
-        if (isPlayerUnit)
+        if (isPlayerUnit)//プレイヤーのポケモンのスプライトを取得
             image.sprite = Pokemon.Base.BackSprite;
-        else
+        else//相手のポケモンのスプライトを取得
             image.sprite = Pokemon.Base.FrontSprite;
 
+        //HUD表示
         hud.gameObject.SetActive(true);
         hud.SetData(pokemon);
 
@@ -52,16 +53,16 @@ public class BattleUnit : MonoBehaviour
         hud.gameObject.SetActive(false);
     }
 
-        public void PlayEnterAnimation()
-    {
+     public void PlayEnterAnimation()//ポケモン登場アニメーション
+     {
         if (isPlayerUnit)
             image.transform.localPosition = new Vector3(-500f, orginalPos.y);
         else
             image.transform.localPosition = new Vector3(500f, orginalPos.y);
         image.transform.DOLocalMoveX(orginalPos.x, 1f);
-    }
+     }
 
-    public void PlayAttackAnimation()
+    public void PlayAttackAnimation()//ポケモン攻撃アニメーション
     {
         var sequence = DOTween.Sequence(); 
         if (isPlayerUnit)
@@ -71,14 +72,14 @@ public class BattleUnit : MonoBehaviour
         sequence.Append(image.transform.DOLocalMoveX(orginalPos.x, 0.25f));
     }
 
-    public void PlayHitAnimation()
+    public void PlayHitAnimation()//ダメージアニメーション
     {
         var sequence = DOTween.Sequence(); 
         sequence.Append(image.DOColor(Color.gray, 0.1f)); 
         sequence.Append(image.DOColor(originalColor, 0.1f));
     }
 
-    public void PlayFaintAnimation()
+    public void PlayFaintAnimation()//ひん死アニメーション
     {
         var sequence = DOTween.Sequence(); 
         sequence.Append(image.transform.DOLocalMoveY(orginalPos.y - 150f, 0.5f));
@@ -86,7 +87,7 @@ public class BattleUnit : MonoBehaviour
         
     }
 
-    public IEnumerator PlayCaptureAnimation()
+    public IEnumerator PlayCaptureAnimation()//ポケモンボール捕獲アニメーション
     {
         var sequence = DOTween.Sequence();
         sequence.Append(image.DOFade(0, 0.5f));
@@ -95,7 +96,7 @@ public class BattleUnit : MonoBehaviour
         yield return sequence.WaitForCompletion();
     }
 
-    public IEnumerator PlayBreakoutAnimation() 
+    public IEnumerator PlayBreakoutAnimation()//ポケモンボール捕獲失敗アニメーション
     {
         var sequence = DOTween.Sequence(); 
         sequence.Append(image.DOFade(1, 0.5f)); 

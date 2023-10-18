@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CountSelectorUI : MonoBehaviour
+public class CountSelectorUI : MonoBehaviour//アイテム数セレクトUI
 {
     [SerializeField] Text countText;
     [SerializeField] Text priceText;

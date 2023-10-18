@@ -56,11 +56,11 @@ public class Pokemon
     public event System.Action OnStatusChanged;
     public event System.Action OnHPChanged;
 
-    public void Init()
+    public void Init()//ポケモンの初期化
     {
 
 
-        //Generate Moves
+        //技の登録
         Moves = new List<Move>();
         foreach(var move in Base.LearnableMoves)
         {
@@ -154,7 +154,7 @@ public class Pokemon
 
         // Apply stat boost
         int boost = StatBoosts[stat]; 
-        var boostValues = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f }; 
+        var boostValues = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f }; //バフデバフの倍率
 
         if (boost >= 0) 
             statVal = Mathf.FloorToInt(statVal * boostValues[boost]); 
@@ -166,17 +166,17 @@ public class Pokemon
         return statVal;
     }
 
-    public void ApplyBoosts(List<StatBoost> statBoosts)
+    public void ApplyBoosts(List<StatBoost> statBoosts)//バフデバフ
     {
         foreach (var statBoost in statBoosts)
         {
             var stat = statBoost.stat;
             var boost = statBoost.boost;
 
-            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
+            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);//バフデバフ段階の上限下限設定
 
             if (boost > 0) 
-                StatusChanges.Enqueue($"{Base.Name}'s {stat} rose!"); 
+                StatusChanges.Enqueue($"{Base.Name}'s {stat} rose!");
             else 
                 StatusChanges.Enqueue($"{Base.Name}'s {stat} fell!");
 
@@ -214,12 +214,12 @@ public class Pokemon
         return Moves.Count(mbox => mbox.Base == moveToCheck) > 0;
     }
 
-    public Evolution CheckForEvolution()
+    public Evolution CheckForEvolution()//進化可能か判定
     {
         return Base.Evolutions.FirstOrDefault(e => e.RequiredLevel <= level);
     }
 
-    public Evolution CheckForEvolution(ItemBase item)
+    public Evolution CheckForEvolution(ItemBase item)//進化可能か判定(アイテム使用時)
     {
         return Base.Evolutions.FirstOrDefault(e => e.RequiredItem == item);
     }
@@ -268,10 +268,10 @@ public class Pokemon
     public DamageDetails TakeDamage(Move move, Pokemon attacker)
     {
         float critical = 1f;
-        if (Random.value * 100f <= 6.25f)
+        if (Random.value * 100f <= 6.25f)//クリティカル判定
             critical = 2f;
 
-        float type = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);
+        float type = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);//ポケモンのタイプによる判定
 
         var damageDetails = new DamageDetails()
         {
@@ -281,6 +281,7 @@ public class Pokemon
 
         };
 
+        //ダメージ計算
         float attack = (move.Base.Category == MoveCategory.Special) ? attacker.SpAttack : attacker.Attack;
         float defense = (move.Base.Category == MoveCategory.Special) ? SpDefense : Defense;
 
@@ -344,7 +345,7 @@ public class Pokemon
         return movesWithPP[r];
     }
 
-    public bool OnBeforeMove()
+    public bool OnBeforeMove()//状態異常か判定(行動前)
     {
         bool canPerformMove = true;
         if (Status?.OnBeforeMove != null)
@@ -360,13 +361,13 @@ public class Pokemon
         return canPerformMove;
     }
 
-    public void OnAfterTurn()
+    public void OnAfterTurn()//状態異常か判定(行動後)
     {
         Status?.OnAfterTurn?.Invoke(this);
         VolatileStatus?.OnAfterTurn?.Invoke(this);
     }
 
-    public void OnBattleOver()
+    public void OnBattleOver()//戦闘後リセット
     {
         VolatileStatus = null;
         ResetStatBoost();

@@ -1,92 +1,51 @@
-using System;
-using System.Collections;
-//using RPG.Control;
-//using GameDevTV.Saving;
+﻿using System.Collections;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-namespace RPG.SceneManagement
+public class Portal : MonoBehaviour, IPlayerTriggerable
 {
-    public class Portal : MonoBehaviour
+    [SerializeField] int sceneToLoad = -1;
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] DestinationIdentifier destinationPortal;
+
+    PlayerController player;
+    
+    public void OnPlayerTriggered(PlayerController player)
     {
-        enum DestinationIdentifier
-        {
-            A, B, C, D, E
-        }
-
-        [SerializeField] int sceneToLoad = -1;
-        [SerializeField] Transform spawnPoint;
-        [SerializeField] DestinationIdentifier destination;
-        [SerializeField] float fadeOutTime = 1f;
-        [SerializeField] float fadeInTime = 2f;
-        [SerializeField] float fadeWaitTime = 0.5f;
-
-        private void OnTriggerEnter(Collider other) {
-            if (other.tag == "Player")
-            {
-                StartCoroutine(Transition());
-            }
-        }
-
-        private IEnumerator Transition()
-        {
-            if (sceneToLoad < 0)
-            {
-                Debug.LogError("Scene to load not set.");
-                yield break;
-            }
-
-            DontDestroyOnLoad(gameObject);
-
-            Fader fader = FindObjectOfType<Fader>();
-            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
-            PlayerController playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-            playerController.enabled = false;
-            
-            yield return fader.FadeOut(fadeOutTime);
-
-            savingWrapper.Save();
-
-            yield return SceneManager.LoadSceneAsync(sceneToLoad);
-            PlayerController newPlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-            newPlayerController.enabled = false;
-
-
-            savingWrapper.Load();
-            
-            Portal otherPortal = GetOtherPortal();
-            UpdatePlayer(otherPortal);
-
-            savingWrapper.Save();
-
-            yield return new WaitForSeconds(fadeWaitTime);
-            fader.FadeIn(fadeInTime);
-
-            newPlayerController.enabled = true;
-            Destroy(gameObject);
-        }
-
-        private void UpdatePlayer(Portal otherPortal)
-        {
-            GameObject player = GameObject.FindWithTag("Player");
-            player.GetComponent<NavMeshAgent>().enabled = false;
-            player.transform.position = otherPortal.spawnPoint.position;
-            player.transform.rotation = otherPortal.spawnPoint.rotation;
-            player.GetComponent<NavMeshAgent>().enabled = true;
-        }
-
-        private Portal GetOtherPortal()
-        {
-            foreach (Portal portal in FindObjectsOfType<Portal>())
-            {
-                if (portal == this) continue;
-                if (portal.destination != destination) continue;
-
-                return portal;
-            }
-
-            return null;
-        }
+        player.Character.Animator.IsMoving = false;
+        this.player = player;
+        StartCoroutine(SwitchScene());
     }
+
+    public bool TriggerRepeatedly => false;
+
+    Fader fader;
+
+    private void Start()
+    {
+        fader = FindObjectOfType<Fader>();
+    }
+
+    IEnumerator SwitchScene()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        GameController.Instance.PauseGame(true);
+        yield return fader.FadeIn(0.5f);
+
+        yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
+        var destPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destinationPortal == this.destinationPortal);
+        player.Character.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
+
+        yield return fader.FadeOut(0.5f);
+        GameController.Instance.PauseGame(false);
+
+        Destroy(gameObject);
+    }
+
+    public Transform SpawnPoint => spawnPoint;
+
+    public enum DestinationIdentifier { A, B, C, D, E}
 }

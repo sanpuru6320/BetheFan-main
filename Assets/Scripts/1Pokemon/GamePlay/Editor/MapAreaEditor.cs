@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class MapAreaEditor : Editor
 {
-    public override void OnInspectorGUI()
+    public override void OnInspectorGUI()//エンカウント率の合計が100で設定するよう警告
     {
         base.OnInspectorGUI();
 

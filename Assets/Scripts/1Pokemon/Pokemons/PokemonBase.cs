@@ -6,6 +6,7 @@ using UnityEngine;
 //[CreateAssetMenu(fileName ="Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PokemonBase : ScriptableObject
 {
+    //ポケモン基本設定
     [SerializeField] string name;
 
     [TextArea]
@@ -26,12 +27,12 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int speed;
 
     [SerializeField] int expYield;
-    [SerializeField] GrowthRate growthRate;
+    [SerializeField] GrowthRate growthRate;//成長の早さ
 
     [SerializeField] int catchRate = 255;
 
-    [SerializeField] List<LearnableMove> learnableMoves;
-    [SerializeField] List<MoveBase> learnableByItems;
+    [SerializeField] List<LearnableMove> learnableMoves;//レベルアップで学べる技
+    [SerializeField] List<MoveBase> learnableByItems;//技マシンで学べる技
 
     [SerializeField] List<Evolution> evolutions;
 

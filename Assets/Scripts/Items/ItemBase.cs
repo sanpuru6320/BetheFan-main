@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemBase : ScriptableObject
 {
+    //アイテム基本設定
     public string nameItem;
     [SerializeField] string description;
     [SerializeField] Sprite icon;

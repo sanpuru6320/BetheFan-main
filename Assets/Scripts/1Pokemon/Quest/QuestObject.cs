@@ -22,7 +22,7 @@ public class QuestObject : MonoBehaviour
         questList.OnUpdated -= UpdateObjectStatus;
     }
 
-    public void UpdateObjectStatus()
+    public void UpdateObjectStatus()//クエストに関連するオブジェクトのアクティブ化/非アクティブ化
     {
         if (onStart != ObjectActions.DoNothing && questList.IsStarted(questToCheck.Name))
         {
@@ -32,9 +32,9 @@ public class QuestObject : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
 
-                    var saveable = child.GetComponent<SavableEntity>();
-                    if(saveable != null)
-                        SavingSystem.i.RestoreEntity(saveable);
+                    //var saveable = child.GetComponent<SavableEntity>();
+                    //if(saveable != null)
+                    //    SavingSystem.i.RestoreEntity(saveable);
                     
                 }
                 else if (onStart == ObjectActions.Disable)
@@ -50,9 +50,9 @@ public class QuestObject : MonoBehaviour
                 {
                     child.gameObject.SetActive(true);
 
-                    var saveable = child.GetComponent<SavableEntity>();
-                    if (saveable != null)
-                        SavingSystem.i.RestoreEntity(saveable);
+                    //var saveable = child.GetComponent<SavableEntity>();
+                    //if (saveable != null)
+                    //    SavingSystem.i.RestoreEntity(saveable);
 
                 }
                 else if (onComplete == ObjectActions.Disable)

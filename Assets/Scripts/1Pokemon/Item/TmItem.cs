@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//[CreateAssetMenu(menuName = "Item/Create new Tm or Hm")]
+[CreateAssetMenu(menuName = "Item/Create new Tm or Hm")]
 public class TmItem : ItemBase
 {
     [SerializeField] MoveBase move;

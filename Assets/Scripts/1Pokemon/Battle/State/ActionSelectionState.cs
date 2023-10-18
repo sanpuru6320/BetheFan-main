@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionSelectionState : State<BattleSystem>
+public class ActionSelectionState : State<BattleSystem>//行動選択ステート
 {
     [SerializeField] ActionSelectionUI selectionUI;
 

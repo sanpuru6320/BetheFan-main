@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CharactorAnimator : MonoBehaviour
 {
+    //上下左右のキャラをアニメーションさせるスプライト
     [SerializeField] List<Sprite> walkDownSprites;
     [SerializeField] List<Sprite> walkUpSprites;
     [SerializeField] List<Sprite> walkRightSprites;
     [SerializeField] List<Sprite> walkLeftSprites;
-    [SerializeField] List<Sprite> surfSprites;
+    [SerializeField] List<Sprite> surfSprites;//サーフ中のスプライト
     [SerializeField] FacingDirection defaultDirection = FacingDirection.Down;
 
     // Parameters
@@ -46,7 +47,7 @@ public class CharactorAnimator : MonoBehaviour
 
         var prevAnim = currentAnim;
 
-        if (!IsSurfing)
+        if (!IsSurfing)//キャラのアニメーション
         {
             if (MoveX == 1)
                 currentAnim = walkRightAnim;
@@ -67,7 +68,7 @@ public class CharactorAnimator : MonoBehaviour
             else
                 spriteRenderer.sprite = currentAnim.Frames[0];
         }
-        else
+        else//サーフ中のキャラのアニメーション
         {
             if (MoveX == 1)
                 spriteRenderer.sprite = surfSprites[2];
@@ -83,7 +84,7 @@ public class CharactorAnimator : MonoBehaviour
         wasPreviouslyMoving = IsMoving;
     }
 
-    public void SetFacingDirection(FacingDirection dir)
+    public void SetFacingDirection(FacingDirection dir)//キャラのスプライトを指定した向きにセット
     {
         MoveX = 0;
         MoveY = 0;

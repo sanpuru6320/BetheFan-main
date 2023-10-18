@@ -37,9 +37,9 @@ public class NPCController : MonoBehaviour, Interactable, ISaveable
         if (state == NPCState.Idle)
         {
             state = NPCState.Dialog;
-            character.LookTowards(initiator.position);
+            character.LookTowards(initiator.position);//プレイヤーの方向へ向く
 
-            if(questToComplete != null)
+            if(questToComplete != null)//クエスト完了後
             {
                 var quest = new Quests(questToComplete);
                 yield return quest.CompletedQuest(initiator);
@@ -48,27 +48,29 @@ public class NPCController : MonoBehaviour, Interactable, ISaveable
                 Debug.Log($"{quest.Base.Name} completed");
             }
 
-            if(itemGiver != null && itemGiver.CanBeGiven())
+            if(itemGiver != null && itemGiver.CanBeGiven())//アイテム受け渡し人の処理
             {
                 yield return itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
             }
-            else if (pokemonGiver != null && pokemonGiver.CanBeGiven())
+            else if (pokemonGiver != null && pokemonGiver.CanBeGiven())//ポケモン受け渡し人の処理
             {
                 yield return pokemonGiver.GivePokemon(initiator.GetComponent<PlayerController>());
             }
-            else if(questToStart != null)
+            else if(questToStart != null)//クエスト持ちか判定
             {
+                //クエストアクティブ化
                 activeQuest = new Quests(questToStart);
                 yield return activeQuest.StartQuest();
                 questToStart = null;
 
+                //クエストが即完了できる場合
                 if (activeQuest.CanBeCompleted())
                 {
                     yield return activeQuest.CompletedQuest(initiator);
                     activeQuest = null;
                 }
             }
-            else if(activeQuest != null)
+            else if(activeQuest != null)//クエストアクティブ中
             {
                 if (activeQuest.CanBeCompleted())
                 {
@@ -80,15 +82,15 @@ public class NPCController : MonoBehaviour, Interactable, ISaveable
                     yield return DialogManager.Instance.ShowDialog(activeQuest.Base.InPrigressDialogue);
                 }
             }
-            else if(healer != null)
+            else if(healer != null)//ポケモン治療人の処理
             {
                 yield return healer.Heal(initiator, dialog);
             }
-            else if(merchant != null)
+            else if(merchant != null)//商人の処理
             {
                 yield return merchant.Trade();
             }
-            else
+            else//デフォルトの会話
             {
                 yield return DialogManager.Instance.ShowDialog(dialog);
             }
@@ -100,7 +102,7 @@ public class NPCController : MonoBehaviour, Interactable, ISaveable
 
     private void Update()
     {
-        if(state == NPCState.Idle)
+        if(state == NPCState.Idle)//ランダムに移動させる
         {
             idleTimer += Time.deltaTime;
             if (idleTimer > timeBetweenPattern)

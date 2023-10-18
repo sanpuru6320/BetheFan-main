@@ -27,6 +27,7 @@ public class GameController : MonoBehaviour
     {
         Instance = this;
 
+        //マウス無効化
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
@@ -40,6 +41,7 @@ public class GameController : MonoBehaviour
     }
     private void Start()
     {
+        //初期ステート移行
         StateMachine = new StateMachine<GameController>(this);
         StateMachine.ChangeState(FreeRoamState.i);
         
@@ -71,6 +73,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //戦闘ステートへ移行
     public void StartBattle(BattleTrigger trigger)
     {
         BattleState.i.trigger = trigger;
@@ -86,7 +89,7 @@ public class GameController : MonoBehaviour
         StateMachine.Push(BattleState.i);
     }
 
-    public void OnEnterTrainersView(TrainerController trainer)
+    public void OnEnterTrainersView(TrainerController trainer)//トレーナーの視界にプレイヤーが入る
     {
         StartCoroutine(trainer.TriggerTrainerBattle(playerController));
     }
@@ -99,11 +102,14 @@ public class GameController : MonoBehaviour
             trainer = null;
         }
 
+        //マップ中のパーティ画面更新
         partyScreen.SetPartyData();
 
+        //カメラ切り替え
         battleSystem.gameObject.SetActive(false); 
         worldCamera.gameObject.SetActive(true);
 
+        //進化可能かチェック
         var playerParty = playerController.GetComponent<PokemonParty>();
         bool hasEvolution = playerParty.CheckForEvolutions();
 
@@ -120,13 +126,13 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void SetCurrentScene(SceneDetail currScene)
+    public void SetCurrentScene(SceneDetail currScene)//現在のシーン取得
     {
         PrevScene = CurrentScene; 
         CurrentScene = currScene;
     }
 
-    public IEnumerator MoveCamera(Vector2 moveOffset, bool waitForFadeOut=false)
+    public IEnumerator MoveCamera(Vector2 moveOffset, bool waitForFadeOut=false)//カメラ移動
     {
         yield return Fader.i.FadeIn(0.5f);
         
@@ -140,7 +146,7 @@ public class GameController : MonoBehaviour
 
     }
 
-    private void OnGUI()
+    private void OnGUI()//ステートの表示
     {
         var style = new GUIStyle();
         style.fontSize = 24;

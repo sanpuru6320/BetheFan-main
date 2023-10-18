@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu(menuName = "Items/Create new evolution item ")]
+[CreateAssetMenu(menuName = "Items/Create new evolution item ")]
 
 public class EvolutionItem : ItemBase
 {

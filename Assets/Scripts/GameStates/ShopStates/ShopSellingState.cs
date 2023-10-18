@@ -56,7 +56,7 @@ public class ShopSellingState : State<GameController>
     IEnumerator SellItem(ItemBase item)
     {
 
-        if (!item.IsSellable)
+        if (!item.IsSellable)//îÃîÑïsâ¬
         {
             yield return DialogManager.Instance.ShowDialogText("You can't sell that!");
             yield break;
@@ -64,6 +64,7 @@ public class ShopSellingState : State<GameController>
 
         walletUI.Show();
 
+        //îÑãpêîÉJÉEÉìÉg
         float sellingPrice = Mathf.Round(item.Price / 2);
         int countToSell = 1;
 
@@ -79,6 +80,7 @@ public class ShopSellingState : State<GameController>
             DialogManager.Instance.CloseDialog();
         }
 
+        //ã‡äzï\é¶
         sellingPrice = sellingPrice * countToSell;
 
         int selectedChoice = 0;
@@ -87,7 +89,7 @@ public class ShopSellingState : State<GameController>
             choices: new List<string>() { "Yes", "No" },
             onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
 
-        if (selectedChoice == 0)
+        if (selectedChoice == 0)//îÑãp
         {
             //Yes
             inventory.RemoveItem(item, countToSell);

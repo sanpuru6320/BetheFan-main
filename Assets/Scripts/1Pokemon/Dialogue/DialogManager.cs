@@ -31,12 +31,12 @@ public class DialogManager : MonoBehaviour
 
         AudioManager.i.PlaySfx(AudioId.UISelect);
         yield return TypeDialog(text);
-        if (waitForInput)
+        if (waitForInput)//次の表示までの入力待ち
         {
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Z));
         }
 
-        if (choices != null && choices.Count > 1)
+        if (choices != null && choices.Count > 1)//選択肢の表示
         {
             yield return choiceBox.ShowChoices(choices, onChoiceSelected);
         }
@@ -88,7 +88,7 @@ public class DialogManager : MonoBehaviour
         
     }
 
-    public IEnumerator TypeDialog(string line)
+    public IEnumerator TypeDialog(string line)//文字を一文字ずつ表示
     {
         dialogText.text = "";
         foreach (var letter in line.ToCharArray())

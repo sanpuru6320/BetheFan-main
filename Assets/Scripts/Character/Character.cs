@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
 {
     public float moveSpeed;
 
-    public bool IsMoving { get; private set; }
+    public bool IsMoving { get; private set; }//移動
     public float OffsetY { get; private set; } = 0.3f;
 
     CharactorAnimator animator;
@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
         SetPositionAndSnapToTile(transform.position);
     }
 
-    public void SetPositionAndSnapToTile(Vector2 pos) 
+    public void SetPositionAndSnapToTile(Vector2 pos)//タイルの中央にキャラのSpriteを調整
     { 
         pos.x = Mathf.Floor(pos.x) + 0.5f; 
         pos.y = Mathf.Floor(pos.y) + 0.5f + OffsetY;
@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
         targetPos.x += moveVec.x;
         targetPos.y += moveVec.y;
 
+        //段差の判定
         var ledge = CheckForLedge(targetPos);
         if(ledge != null)
         {
@@ -43,11 +44,13 @@ public class Character : MonoBehaviour
         if (checkCollisions && !IsPathClear(targetPos))
             yield break;
 
+        //水上判定
         if (animator.IsSurfing && Physics2D.OverlapCircle(targetPos, 0.3f, GameLayers.i.WaterLayer) == null)
             animator.IsSurfing = false;
 
         IsMoving = true;
 
+        //キャラクターの移動
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
@@ -90,13 +93,13 @@ public class Character : MonoBehaviour
         return true;
     }
 
-    Ledge CheckForLedge(Vector3 targetPos)
+    Ledge CheckForLedge(Vector3 targetPos)//段差があるかチェック
     {
         var collider = Physics2D.OverlapCircle(targetPos, 0.15f, GameLayers.i.LedgeLayer);
         return collider?.GetComponent<Ledge>();
     }
 
-    public void LookTowards(Vector3 targetPos)
+    public void LookTowards(Vector3 targetPos)//キャラの向き変更
     {
         var xdiff = Mathf.Floor(targetPos.x) - Mathf.Floor(transform.position.x); 
         var ydiff = Mathf.Floor(targetPos.y) - Mathf.Floor(transform.position.y); 

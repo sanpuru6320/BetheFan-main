@@ -34,7 +34,7 @@ public class BattleDialogBox : MonoBehaviour
         dialogText.text = dialog;
     }
 
-    public IEnumerator TypeDialog(string dialog)
+    public IEnumerator TypeDialog(string dialog)//テキストを一文字ずつ順に表示
     {
         dialogText.text = "";
         foreach (var letter in dialog.ToCharArray())
@@ -102,7 +102,7 @@ public class BattleDialogBox : MonoBehaviour
             ppTexts.color = Color.black;
     }
 
-    public void SetMoveNames(List<Move> moves)
+    public void SetMoveNames(List<Move> moves)//技をセット
     {
         for(int i=0; i<moveTexts.Count; ++i)
         {
@@ -113,7 +113,7 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    public void UpdateChoiceBox(bool yesSelected)
+    public void UpdateChoiceBox(bool yesSelected)//選択肢ハイライト切り替え
     {
         if (yesSelected)
         {

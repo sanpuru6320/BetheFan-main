@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WalletUI : MonoBehaviour
+public class WalletUI : MonoBehaviour//所持金UI
 {
     [SerializeField] Text moneyTxt;
 
@@ -12,7 +12,7 @@ public class WalletUI : MonoBehaviour
         Wallet.i.OnMoneyChanged += SetMoneyTxt;
     }
 
-    public void Show()
+    public void Show()//所持金表示
     {
         gameObject.SetActive(true);
         SetMoneyTxt();

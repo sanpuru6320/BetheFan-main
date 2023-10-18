@@ -34,7 +34,7 @@ public class PokemonParty : MonoBehaviour
 
     }
 
-    public Pokemon GetHealthyPokemon()
+    public Pokemon GetHealthyPokemon()//行動可能なポケモンの取得
     {
         return pokemons.Where(x => x.HP > 0).FirstOrDefault();
     }
@@ -52,7 +52,7 @@ public class PokemonParty : MonoBehaviour
         }
     }
 
-    public bool CheckForEvolutions()
+    public bool CheckForEvolutions()//進化可能なポケモンをチェック
     {
         return pokemons.Any(p => p.CheckForEvolution() != null);
     }
