@@ -1,5 +1,4 @@
-﻿using GameDevTV.Saving;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
+public class PlayerController : MonoBehaviour, ISaveable
 {
 
     [SerializeField] string name;//プレイヤー名
@@ -114,16 +113,6 @@ public class PlayerController : MonoBehaviour, ISaveable, IJsonSaveable
 
         // Restore Party
         //GetComponent<PokemonParty>().Pokemons = saveData.pokemons.Select(s => new Pokemon(s)).ToList();
-    }
-
-    public JToken CaptureAsJToken()
-    {
-        return transform.position.ToToken();
-    }
-
-    public void RestoreFromJToken(JToken state)
-    {
-        transform.position = state.ToObject<Vector3>();
     }
 
     public string Name
