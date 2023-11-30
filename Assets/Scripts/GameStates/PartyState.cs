@@ -42,35 +42,69 @@ public class PartyState : State<GameController>
     void OnPokemonSelected(int selection)
     {
         SelectedPokemon = partyScreen.SelectedMember;
+        StartCoroutine(PokemonSelectedAction(selection));
         
+    }
+
+    IEnumerator PokemonSelectedAction(int selectedPokemonIndex)
+    {
         var prevState = gc.StateMachine.GetPrevState();//一つ前のステート取得
-        if(gc.StateMachine.GetPrevState() == InventoryState.i)//インベントリからアイテムを使用している場合
+        if (gc.StateMachine.GetPrevState() == InventoryState.i)//インベントリからアイテムを使用している場合
         {
             //Use Item
             StartCoroutine(GoToUseItemState());
-            
+
         }
-        else if(prevState == BattleState.i)
+        else if (prevState == BattleState.i)
         {
             var battleState = prevState as BattleState;
 
-            if (SelectedPokemon.HP <= 0)//瀕死の場合
+            DynamicMenuState.i.MenuItems = new List<string>() { "Shift", "Summmary", "Cancel" };
+            yield return gc.StateMachine.PushAndWait(DynamicMenuState.i);
+            if (DynamicMenuState.i.SelectedItem == 0)
             {
-                partyScreen.SetMessageText("You can't send out a fainted pokemon");
-                return;
-            }
-            if (SelectedPokemon == battleState.BattleSystem.PlayerUnit.Pokemon)//既に場に出ている場合
-            {
-                partyScreen.SetMessageText("You can't switch with the same pokemon");
-                return;
-            }
+                if (SelectedPokemon.HP <= 0)//瀕死の場合
+                {
+                    partyScreen.SetMessageText("You can't send out a fainted pokemon");
+                    yield break;
+                }
+                if (SelectedPokemon == battleState.BattleSystem.PlayerUnit.Pokemon)//既に場に出ている場合
+                {
+                    partyScreen.SetMessageText("You can't switch with the same pokemon");
+                    yield break;
+                }
 
-            gc.StateMachine.Pop();
+                gc.StateMachine.Pop();
+            }
+            else if (DynamicMenuState.i.SelectedItem == 1)
+            {
+                SummaryState.i.SelectedPokemonIndex = selectedPokemonIndex;
+                yield return gc.StateMachine.PushAndWait(SummaryState.i);
+            }
+            else
+            {
+                yield break;
+            }
         }
         else
         {
-            //Todo : Open summary screen
+            DynamicMenuState.i.MenuItems = new List<string>() { "Summmary", "Switch Position", "Cancel" };
+            yield return gc.StateMachine.PushAndWait(DynamicMenuState.i);
+            if(DynamicMenuState.i.SelectedItem == 0)
+            {
+                SummaryState.i.SelectedPokemonIndex = selectedPokemonIndex;
+                yield return gc.StateMachine.PushAndWait(SummaryState.i);
+            }
+            else if(DynamicMenuState.i.SelectedItem == 1)
+            {
+                //Switch Position
+            }
+            else
+            {
+                yield break;
+            }
         }
+
     }
 
     IEnumerator GoToUseItemState()
