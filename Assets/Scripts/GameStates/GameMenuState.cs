@@ -44,6 +44,8 @@ public class GameMenuState : State<GameController>
             gc.StateMachine.Push(PartyState.i);
         else if (selection == 1)//Bag
             gc.StateMachine.Push(InventoryState.i);
+        else if(selection == 2)//Boxes
+            gc.StateMachine.Push(StorageState.  i);
     }
 
     void OnBack()

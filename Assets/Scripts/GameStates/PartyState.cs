@@ -8,11 +8,21 @@ public class PartyState : State<GameController>
     [SerializeField] PartyScreen partyScreen;
 
     public Pokemon SelectedPokemon { get; private set; }
+
+    bool isSwitchingPosition;
+    int selectedIndexForSwitching = 0;
     public static PartyState i { get; private set; }
 
     private void Awake()
     {
         i = this;
+    }
+
+    PokemonParty playerParty;
+
+    private void Start()
+    {
+        playerParty = PlayerController.i.GetComponent<PokemonParty>();
     }
 
     GameController gc;
@@ -88,6 +98,24 @@ public class PartyState : State<GameController>
         }
         else
         {
+            if (isSwitchingPosition)
+            {
+                if(selectedIndexForSwitching == selectedPokemonIndex)
+                {
+                    partyScreen.SetMessageText("You can't switch with the same pokemon");
+                    yield break;
+                }
+
+                isSwitchingPosition = false;
+
+                var tmpPokemon = playerParty.Pokemons[selectedIndexForSwitching];
+                playerParty.Pokemons[selectedIndexForSwitching] = playerParty.Pokemons[selectedPokemonIndex];
+                playerParty.Pokemons[selectedPokemonIndex] = tmpPokemon;
+                playerParty.PartyUpdated();
+
+                yield break;
+            }
+
             DynamicMenuState.i.MenuItems = new List<string>() { "Summmary", "Switch Position", "Cancel" };
             yield return gc.StateMachine.PushAndWait(DynamicMenuState.i);
             if(DynamicMenuState.i.SelectedItem == 0)
@@ -98,6 +126,9 @@ public class PartyState : State<GameController>
             else if(DynamicMenuState.i.SelectedItem == 1)
             {
                 //Switch Position
+                isSwitchingPosition = true;
+                selectedIndexForSwitching = selectedPokemonIndex;
+                partyScreen.SetMessageText("Choose a pokemon to switch position with");
             }
             else
             {

@@ -32,6 +32,8 @@ public class PartyScreen : SelectionUI<TextSlot>//プレイヤーのパーティ
 
         pokemons = party.Pokemons;
 
+        ClearItems();
+
         for (int i = 0; i < memberSlots.Length; i++)//ポケモンの数だけスロットに表示
         {
             if (i < pokemons.Count)
