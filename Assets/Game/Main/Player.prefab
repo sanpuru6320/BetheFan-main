@@ -103,17 +103,8 @@ GameObject:
   - component: {fileID: -8744812646438803668}
   - component: {fileID: 2685685861430450912}
   - component: {fileID: 7683830144713621992}
-  - component: {fileID: -1090413458869397881}
-  - component: {fileID: 5150038664367298540}
   - component: {fileID: 905295416519791413}
-  - component: {fileID: 2742853833819212897}
-  - component: {fileID: 2668844650941268161}
-  - component: {fileID: 1060779369217253083}
-  - component: {fileID: 6458255912589372744}
-  - component: {fileID: 1534341337500741779}
-  - component: {fileID: 3367611560121736356}
-  - component: {fileID: 962532640094675610}
-  - component: {fileID: 3692974826842695756}
+  - component: {fileID: 9205506947393315751}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -396,57 +387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 1000
---- !u!114 &-1090413458869397881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54e3b2e13a0014d44b6b2ba0d9ea0591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bonusConfig:
-  - trait: 0
-    stat: 3
-    additiveBonusPerPoint: 5
-    percentageBonusPerPoint: 0
-  - trait: 1
-    stat: 0
-    additiveBonusPerPoint: 0
-    percentageBonusPerPoint: 5
-  - trait: 2
-    stat: 8
-    additiveBonusPerPoint: 5
-    percentageBonusPerPoint: 0
-  - trait: 3
-    stat: 4
-    additiveBonusPerPoint: 0
-    percentageBonusPerPoint: 5
-  - trait: 4
-    stat: 0
-    additiveBonusPerPoint: 0
-    percentageBonusPerPoint: 0
-  charStats: {fileID: 1060779369217253083}
---- !u!114 &5150038664367298540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eacf20591b9dd6044bbcd90ca8f098db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingLevel: 1
-  characterClass: 0
-  progression: {fileID: 11400000, guid: eb16030507a845e4c92d3b0f9b7d1f8c, type: 2}
-  levelUpParticleEffect: {fileID: 0}
-  shouldUseModifiers: 1
 --- !u!114 &905295416519791413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1a89332f5d7ec4cbd00da53814ae26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2742853833819212897
+--- !u!114 &9205506947393315751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -468,132 +408,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2835889286278108676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13bf70b1ee679384b9433a8bfd46e619, type: 3}
+  m_Script: {fileID: 11500000, guid: 6377756246d23c54ebe8993dcb0a64d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: san
---- !u!114 &2668844650941268161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2b8ba07ad17acc4285f8bf059a1f5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1060779369217253083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76952862b77b3a498c16adc915c1bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charName: Tim
-  currentEXP: 250
-  maxLevel: 10
-  currentHP: 1000
-  currentMP: 30
-  strength: 15
-  defence: 12
-  wpnPwr: 0
-  armrPwr: 0
-  maxHP: 100
-  maxMP: 30
-  mpLvlBonus: 000000000000000005000000000000000a00000000000000000000000c0000000000000000000000110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  equippedWpn: {fileID: 0}
-  equippedArmr: {fileID: 0}
-  charIamge: {fileID: 21300000, guid: e7388ca1179fd3144832db29155586b2, type: 3}
---- !u!114 &6458255912589372744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e459dd095ef9f8944906947b0bcd80c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots:
-  - skill: {fileID: 0}
-    count: 0
---- !u!114 &1534341337500741779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074c0a15af484aa45a92664f1acbfbd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots:
-  - item: {fileID: 11400000, guid: 00ed579f4e62461449305d742f52096a, type: 2}
-    count: 1
-  - item: {fileID: 11400000, guid: 882d10921c1a9134aa79ef7a010258d3, type: 2}
-    count: 11
-  - item: {fileID: 11400000, guid: 81de6ed9d49426746b37d81728c5e9c3, type: 2}
-    count: 2
-  armorSlots:
-  - item: {fileID: 11400000, guid: 20e2daad8d5acf84a9df4d053299ef0c, type: 2}
-    count: 3
-  - item: {fileID: 11400000, guid: ec82459aad237b942a93664714ff6eae, type: 2}
-    count: 2
-  - item: {fileID: 11400000, guid: aedf7847e78eae34693ff78b8e1f9a4a, type: 2}
-    count: 1
-  potionSlots:
-  - item: {fileID: 11400000, guid: 9307780f257f4c745b4699971bce7162, type: 2}
-    count: 1
-  - item: {fileID: 11400000, guid: bcc26aba897b21f4e8a2565449b19c8a, type: 2}
-    count: 3
-  - item: {fileID: 11400000, guid: 72cf10cd681d08f498cf3c78dd959352, type: 2}
-    count: 2
---- !u!114 &3367611560121736356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fcc1a41e8645c4c86dc6f435f38aaf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &962532640094675610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f789e6ec28b200459df6fd28a4d363c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingBalance: 4000000
---- !u!114 &3692974826842695756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2835889286278108676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed41a504b1e4f14e9ed75617dc7e959, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uniqueIdentifier: 

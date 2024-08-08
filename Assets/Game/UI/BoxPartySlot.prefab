@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 238403211166365072}
   - component: {fileID: 2052063218347998153}
   - component: {fileID: 4750913912361482926}
+  - component: {fileID: 5692738272174435979}
   m_Layer: 5
   m_Name: BoxPartySlot
   m_TagString: Untagged
@@ -92,6 +93,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64724bdb69ed89142be2dab4d8d7ed7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5692738272174435979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630577449683050223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59120fe2266be64b8f94c0302de43f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameTxt: {fileID: 6107667214229771612}
+  lvlTxt: {fileID: 2923026313700682663}
+  image: {fileID: 3980679907245606982}
 --- !u!1 &1697215725955588575
 GameObject:
   m_ObjectHideFlags: 0
